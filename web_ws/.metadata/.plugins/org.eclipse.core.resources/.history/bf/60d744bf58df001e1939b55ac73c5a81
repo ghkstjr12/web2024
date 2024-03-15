@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function check() {
+    let frm = document.frm;
+    let m_no = frm.m_no.value.trim(); // 공백 제거
+    let m_name = frm.m_name.value.trim();
+    let m_age = frm.m_age.value.trim();
+    let m_phone = frm.m_phone.value.trim();
+
+    // 각 필드에 값이 있는지 확인
+    if(m_no === "") {
+        alert("회원번호를 입력하세요.");
+        frm.m_no.focus();
+        return false;
+    }
+    if(m_name === "") {
+        alert("회원이름을 입력하세요.");
+        frm.m_name.focus();
+        return false;
+    }
+    if(m_age === "") {
+        alert("나이를 입력하세요.");
+        frm.m_age.focus();
+        return false;
+    }
+    if(m_phone === "") {
+        alert("전화번호를 입력하세요.");
+        frm.m_phone.focus();
+        return false;
+    }
+
+    // 모든 유효성 검사 통과
+    return true;
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>

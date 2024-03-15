@@ -1,0 +1,236 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+ <%@  page import="java.sql.*" %>    
+
+
+
+
+    <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+*{
+padding:0px;
+margin:0px;
+
+
+}
+
+
+ header{
+ border:1px solid  black;
+ padding:10px;
+ 
+ }
+ 
+ h2{
+  /* margin:0 atuo;  적용불가 :  h2 블럭태그 , 한 줄 다 차지함 */
+   
+   text-align: center;
+ }
+ nav{
+  border:1px solid  black;
+  height: 100px;
+  
+  /* 
+  부모 지정  
+  반드시 크기(높이가 있어야 함 )
+  */
+  position:relative;
+ 
+ }
+ 
+ ul{
+  list-style: none;
+  border:1px solid black;  
+  display: flex;
+  border-bottom-color: blue;
+  
+  position: absolute;
+  right: 0px;   /* left, right, top, bottom*/
+  bottom:0px;
+
+  
+ }
+ 
+ ul li {
+   /*border:1px solid black;*/
+   padding-right: 10px;
+ 
+ }
+ 
+ 
+ section{ 
+  border:1px solid  black;
+  padding: 20px;
+  height: 600px;
+ }
+ 
+ 
+ footer{
+  border:1px solid  black;
+  /*  부모에 display: flex   footer의 자식 div가 옆으로 나온다*/
+  display: flex;
+ }
+ 
+ 
+ footer > div {
+  border:1px solid  black;
+  width:33%;
+  padding:10px;
+ }
+ 
+ 
+ table{ 
+  width:400px;
+  border:1px solid black;
+  border-collapse: collapse;  
+  margin: 0 auto;
+  height: 200px;
+ }
+ 
+ td{
+ border:1px solid black;
+ text-align: center;
+ } 
+ 
+ a{
+  text-decoration: none;
+  color:black;
+ }
+ 
+ 
+ 
+ 
+</style>
+
+<script type="text/javascript">
+function check() {
+   // alert("경고문");
+   
+   // 사용자의 입력이 모두 ok > true 반환 (submit 기능이 정상적으로 수행)
+   // 사용자의 x > false 반환
+   let frm = document.frm;
+   let m_no = frm.m_no.value;
+   let m_name = frm.m_name.value;
+   let m_age = frm.m_age.value;
+   let m_phone = frm.m_phone.value;
+   let m_no_pattern = /^[A-Z]\d{3}$/;
+   let m_name_pattern = /^[가-힣]{3}$/;
+   let m_age_pattern = /^\d{2}$/;
+   let m_phone_pattern = /^\d{3}-\d{4}-\d{4}$/;
+   
+   if(m_no=="") {
+      alert("회원번호를 입력하세요");
+      frm.m_no.focus(); //등록 누를 시 커서 이동
+      return false;
+   } else if (m_name=="") {
+      alert("회원이름을 입력하세요");
+      frm.m_name.focus();
+      return false;
+   } else if (m_age=="") {
+      alert("나이를 입력하세요");
+      frm.m_age.focus();
+      return false;
+   } else if (m_phone=="") {
+	      alert("전화번호를 입력하세요");
+	      frm.m_phone.focus();
+	      return false;
+   }
+	   // 회원번호 유효성 검사: 대문자 알파벳 + 숫자 3개
+	      
+	      else if (!m_no_pattern.test(m_no)) {
+	          alert("올바른 회원번호 형식이 아닙니다. (대문자 알파벳 + 숫자 3개)");
+	          frm.m_no.focus();
+	          return false;
+	      // 이름 유효성 검사: 한글 3글자
+	      else if (!m_name_pattern.test(m_name)) {
+	          alert("올바른 이름 형식이 아닙니다. (한글 3글자)");
+	          frm.m_name.focus();
+	          return false;
+	      }
+	      // 나이 유효성 검사: 두 자리 숫자
+	        else if (!m_age_pattern.test(m_age)) {
+	          alert("올바른 나이 형식이 아닙니다. (두 자리 숫자)");
+	          frm.m_age.focus();
+	          return false;
+	      }
+
+	      // 전화번호 유효성 검사: 010-0000-0000 형식
+	     
+	      else  if (!m_phone_pattern.test(m_phone)) {
+	          alert("올바른 전화번호 형식이 아닙니다. (010-0000-0000 형식)");
+	          frm.m_phone.focus();
+	          return false;
+	      
+   }else {
+      return true;
+   }
+}
+</script>
+
+</head>
+<body>
+
+
+<header> 
+<h2>상담 회원관리 프로그램</h2>
+</header>
+
+<nav>
+ <ul>
+ <li> <a href="index.html">home</a></li>
+ <li>회원등록</li>
+ <li>회원조회</li>
+ </ul>
+</nav>
+
+<section>    
+ 
+ <form name="frm" action="insertAction.jsp"  method="post"> 
+	 <table>
+	 <caption> 상담 회원등록</caption>
+	 
+	 <tr>
+	 <td>회원번호</td>
+	 <td><input type="text"  name="m_no"></td>
+	 </tr>
+	  <tr>
+	 <td>회원이름</td>
+	 <td><input type="text" name="m_name"></td>
+	 </tr>
+	  <tr>
+	 <td>나이</td>
+	 <td><input type="text" name="m_age"></td>
+	 </tr>
+	 <tr>
+	 <td>전화번호</td>
+	 <td><input type="text" name="m_phone"></td>
+	 </tr>
+	  <tr>
+    <td  colspan="2">
+    <button type="submit" onclick="return check();">등록</button>
+    <button type="reset">취소</button>
+    </td> 
+    </tr>
+    </table>
+</form>   
+   
+
+</section>
+
+<footer>
+   <div class="footer_item"> acorn</div>
+   <div class="footer_item"></div>
+   <div class="footer_item" >서울시 마포구</div>
+</footer>
+
+
+
+
+</body>
+</html>

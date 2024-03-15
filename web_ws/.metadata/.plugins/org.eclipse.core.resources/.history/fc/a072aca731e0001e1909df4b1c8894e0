@@ -1,0 +1,13 @@
+package day6;
+
+import java.util.ArrayList;
+
+public class Prac12Service {
+	public ArrayList<Book> getBookList(){
+		
+		//
+		ArrayList<Book> list = new ArrayList<>();
+		
+		return null;
+	}
+}

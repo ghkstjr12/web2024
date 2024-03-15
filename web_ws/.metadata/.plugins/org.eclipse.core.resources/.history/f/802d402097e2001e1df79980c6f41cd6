@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+function getData(){
+	alert("dkdkdkf");
+	
+	
+	let snack = {
+			name:"맛동산",
+			price:"13000"
+	},
+	{
+		name:"꿀꽈배기",
+		price:"1000"
+	}
+	};
+	$.ajax({
+		
+	});
+}
+</script>
+</head>
+<body>
+<button>음식정보</button>
+
+
+<div id="wrap"></div>
+</body>
+</html>

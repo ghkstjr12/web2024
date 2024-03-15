@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+ .login{
+	float : right;
+}
+header{
+	/* border:1px solid black; */ 
+	height : 200px;
+	text-align: center;
+}
+header img {
+	height: 150px; 
+	padding-top: 20px;
+}
+nav{
+   
+    border-bottom:1px solid black;
+    border-top : 1px solid black;
+    padding :10px;
+    text-align: center;
+    background-color: #d5ebed;
+    /* background-image: linear-gradient(to bottom, #494d95, #45b4c1); */
+}
+
+a{
+   text-decoration:none;
+   color:black;
+}
+nav span{
+   padding-left: 50px;
+   padding-right: 50px;
+}
+
+a:hover{
+	color: #ffffff;
+}
+ 
+ .wrap{
+ 	width:400px;
+ 	/* border:1px solid black; */ 
+ 	padding:10px;
+ 	margin: 30px auto;
+ }
+ 
+ .img_wrap{
+ 	width:200px;
+ 	height: 200px;
+ 
+  /*	background-color: blue;  */  
+  /*  이미지 3종*/
+    background-image: url(logo.PNG);
+ 	background-position:center;
+ 	background-size:cover;
+ 	
+ 	margin: 0 auto;
+ }
+ 
+ .info_wrap{
+ 	width:300px;
+ 	/*border:1px solid black */;
+ 	margin:0 auto;
+ 	margin-top:20px;
+ 
+ }
+ 
+ .info_wrap input{
+  width:97%;
+  height: 30px;
+  
+ }
+ 
+ .info_wrap button{
+ 	width:100%;
+ 	height: 40px;
+ 	margin-top: 15px;
+ 	border:none;
+ 	
+ }
+ 
+footer{
+  /* border:1px solid black; */ 
+  display: flex;
+  padding:10px;
+  margin-top: 50px;
+  font-size: 11px;
+  background-color: #dae7e9;
+}
+
+footer  > div{
+ 
+}
+
+
+footer > div:nth-child(1) {    
+    width:20%;
+}
+
+
+
+footer > div:nth-child(2) {    
+    width:60%;
+}
+
+
+
+footer > div:nth-child(3) {
+    width:20%;
+}
+ 
+</style>
+
+<script>
+function check(){
+	 //alert("dkdkdkfdf");
+	 
+	 let frm = document.frm;
+	 let id  = frm.id.value;
+	 
+	 if( id==""){
+		 alert("id 입력하세요");
+		 frm.id.focus();
+	 }else{
+		 frm.submit();
+	 }
+	 
+	 
+}
+</script>
+</head>
+<body>
+
+
+<header>
+	<a href="mb_home.jsp"><img alt="" src="logo1.PNG"></a>
+</header>
+
+<nav>
+	<span> <a href="#">  상담사소개</a></span>
+	<span> <a href="insert.jsp"> 회원등록</a></span>
+   	<span> <a href="memberList.jsp">  회원조회</a></span>
+   	<span> <a href="#">  진료내역</a></span>
+   	<span> <a href="loginAction.jsp">	로그인</a></span>
+   	<span> <a href="#">	회원가입</a></span>
+   
+</nav>
+
+
+
+<div class="wrap">
+	<!-- 이미지 영역 -->
+	<div class="img_wrap"></div>
+	
+	<!-- 로그인정보영역 -->
+	
+	<form name="frm"  action="loginAction.jsp"  method="post">
+		<div class="info_wrap"> 
+			<input type="text" placeholder="회원번호"  name="m_no">
+			<input type="text" placeholder="이름"  name="m_name" >
+			<button  type="button"  onclick="check()">로그인</button>
+		</div>
+	</form>
+	
+</div>
+
+
+
+<footer>
+	<div>힐링상담센터</div>
+	<div> 회사소개 찾아오시는길 대표번호 대표자:xxx 고객센터 </div>
+	<div>기업 사이트</div>
+</footer>
+</body>
+</html>

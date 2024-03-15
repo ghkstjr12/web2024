@@ -1,0 +1,24 @@
+package day8;
+
+import java.sql.Connection;
+
+public class AcornDAO {
+
+	String driver="oracle.jdbc.driver.OracleDriver";
+	String url="jdbc:oracle:thin:@localhost:1521:testdb";
+	String user="scott";
+	String password="tiger";
+	
+	
+	//매서드
+	//db연결
+	
+	public Connection dbcon() {
+		
+		
+		return null;
+		
+	}
+	
+	//매서드 에이콘 학생목록 조회
+}

@@ -1,0 +1,15 @@
+package board;
+import java.util.ArrayList;
+import java.util.List;
+
+public class BoardService {
+    private static ArrayList<Board> posts = new ArrayList<>();
+
+    public static ArrayList<Board> getAllPosts() {
+        return posts;
+    }
+
+    public static void addPost(Board post) {
+        posts.add(post);
+    }
+}

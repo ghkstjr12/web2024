@@ -1,0 +1,7 @@
+package day6;
+
+public class pracService {
+	public int hap(int sul, int sul2) {
+		return su1 + su2;
+	}
+}

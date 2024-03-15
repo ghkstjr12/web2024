@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+function getData(){
+	alert("dkdkdkf");
+}
+</script>
+</head>
+<body>
+<button>음식정보</button>
+
+
+<div id="wrap"></div>
+</body>
+</html>

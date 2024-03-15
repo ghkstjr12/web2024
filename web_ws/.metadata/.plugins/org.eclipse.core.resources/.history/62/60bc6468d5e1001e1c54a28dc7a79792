@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Board</title>
+</head>
+<body>
+    <h1>Simple Board</h1>
+    
+    <% 
+        ArrayList<Board> posts = (ArrayList<Board>) request.getAttribute("posts");
+        if (posts != null && !posts.isEmpty()) {
+            for (Board post : posts) {
+    %>
+                <p><%= post.getTitle() %> - <%= post.getAuthor() %></p>
+    <% 
+            }
+        } else {
+    %>
+            <p>No posts available</p>
+    <% 
+        }
+    %>
+    
+    <form action="board" method="post">
+        <input type="text" name="title" placeholder="제목">
+        <input type="text" name="author" placeholder="작성자">
+        <textarea name="content" placeholder="내용"></textarea>
+        <button type="submit">작성</button>
+    </form>
+</body>
+</html>

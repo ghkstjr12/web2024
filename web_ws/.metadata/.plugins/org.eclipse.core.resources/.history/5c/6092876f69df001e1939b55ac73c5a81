@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ <%@  page import="java.sql.*" %>
+    
+
+
+<%
+
+ String m_no  =request.getParameter("m_no");
+ out.println( m_no);
+ 
+ 	String driver = "oracle.jdbc.driver.OracleDriver";
+	String url = "jdbc:oracle:thin:@localhost:1521:testdb";
+	String user = "scott";
+	String password = "tiger";	
+	
+			
+	 try {
+	        Class.forName(driver);
+	        Connection con = DriverManager.getConnection(url, user, password);
+
+	        // 다른 테이블에서 해당 레코드를 참조하는지 확인하는 SQL문 작성
+	        String checkSql = "SELECT COUNT(*) AS count FROM other_table WHERE m_no = ?";
+	        PreparedStatement checkPst = con.prepareStatement(checkSql);
+	        checkPst.setString(1, m_no);
+	        ResultSet rs = checkPst.executeQuery();
+	        rs.next();
+	        int count = rs.getInt("count");
+
+	        if (count == 0) {
+	            // 다른 테이블에서 해당 레코드를 참조하는 경우가 없으므로 삭제 진행
+	            String deleteSql = "delete from counsel_member WHERE m_no = ?";
+	            PreparedStatement pst = con.prepareStatement(deleteSql);
+	            pst.setString(1, m_no);
+	            int cnt = pst.executeUpdate();
+	        } else {
+	            // 다른 테이블에서 해당 레코드를 참조하는 경우가 있음을 알림
+	            out.println("다른 테이블에서 해당 레코드를 참조하고 있어 삭제할 수 없습니다.");
+	        }	
+		 		 			
+		
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	// 재요청 
+	response.sendRedirect("memberList.jsp");
+	//응답코드(출력)는 무시된다. 응답되지 않는다 .
+
+%>    
+
+
+
+
+    

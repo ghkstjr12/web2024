@@ -1,0 +1,21 @@
+package day8;
+
+import java.util.ArrayList;
+
+public class SimpleService {
+
+   //
+   AcornDAO dao = new AcornDAO();
+   
+   public String getsimple() {
+      String str ="이것이 MVCdlek";
+      return str;
+   }
+   
+   
+   public ArrayList<Acorn> getMembers(){
+	   
+	   ArrayList<Acorn> list = dao.selectAll();
+	   return list;
+   }
+}

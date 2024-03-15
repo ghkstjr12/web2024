@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class BoardService {
+    private List<BoardPost> posts;
+
+    public BoardService() {
+        this.posts = new ArrayList<>();
+    }
+
+    public List<BoardPost> getAllPosts() {
+        return posts;
+    }
+
+    public void addPost(BoardPost post) {
+        posts.add(post);
+    }
+}

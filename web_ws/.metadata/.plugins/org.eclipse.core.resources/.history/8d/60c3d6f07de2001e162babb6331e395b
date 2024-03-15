@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js">
+
+
+
+$(document).ready(
+		function(){
+			/*
+			//선택하고 변경하기
+			let wrap = document.querySelector(".wrap");
+			wrap.innerHTML= "hi jquery^^";
+			*/
+			$(".wrap").html("hi jquery &&");
+		}
+		
+		);
+
+</script>
+</head>
+<body>
+<div class="wrap">hi</div>
+</body>
+</html>

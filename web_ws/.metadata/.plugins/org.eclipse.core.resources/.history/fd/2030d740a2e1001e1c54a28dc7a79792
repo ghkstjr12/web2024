@@ -1,0 +1,11 @@
+package day8;
+
+public class SimpleService {
+
+   //
+   
+   public String getsimple() {
+      String str ="이것이 MVCdlek";
+      return str;
+   }
+}

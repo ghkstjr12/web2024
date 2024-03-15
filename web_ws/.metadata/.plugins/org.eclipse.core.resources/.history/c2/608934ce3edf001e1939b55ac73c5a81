@@ -1,0 +1,64 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@  page import="java.sql.*" %>	
+ 
+   
+
+<%
+
+
+request.setCharacterEncoding("utf-8");
+String m_no =request.getParameter("m_no");
+String m_name = request.getParameter("m_name");
+String m_age = request.getParameter("m_age");
+String m_phone = request.getParameter("m_phone");
+
+
+out.print(m_no);
+out.print(m_name);
+out.print(m_age); 
+out.print(m_phone);
+
+
+String driver = "oracle.jdbc.driver.OracleDriver";
+String url = "jdbc:oracle:thin:@localhost:1521:testdb";
+String user = "scott";
+String password = "tiger";	
+
+		
+try {
+	Class.forName(driver);		 
+	Connection  con = DriverManager.getConnection(url, user, password);	
+	 
+	 
+	String sql  =" update counsel_member set pw=?  where m_no= ?";
+	PreparedStatement  pst =con.prepareStatement(sql);
+	pst.setString(1, pw);
+	pst.setString(2, m_no);	
+    int cnt  =pst.executeUpdate();  // 등록, 변경, 삭제	
+    System.out.println( cnt +"개수 변경 되었음");
+	 		
+	
+} catch (ClassNotFoundException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+} catch (SQLException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+%>
+
+    
+    
+    
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  변경완료 !!
+</body>
+</html>
